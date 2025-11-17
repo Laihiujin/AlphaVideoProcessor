@@ -3,3 +3,4 @@ windows_build/
 mac_build/build/
 mac_build/dist/
 installer/
+mac_build/
