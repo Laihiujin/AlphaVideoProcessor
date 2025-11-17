@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alpha视频批量合成操作指南</title>
+    <style>
+        body {
+            font-family: 'Microsoft YaHei', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f8f9fa;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 10px;
+            margin-bottom: 30px;
+        }
+        h2 {
+            color: #34495e;
+            border-left: 4px solid #3498db;
+            padding-left: 15px;
+            margin-top: 30px;
+        }
+        h3 {
+            color: #2980b9;
+            margin-top: 25px;
+        }
+        .step-box {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 20px 0;
+            text-align: center;
+            font-weight: bold;
+            font-size: 18px;
+        }
+        .tip-box {
+            background: #e8f5e8;
+            border: 1px solid #4caf50;
+            border-radius: 5px;
+            padding: 15px;
+            margin: 15px 0;
+        }
+        .warning-box {
+            background: #fff3cd;
+            border: 1px solid #ffc107;
+            border-radius: 5px;
+            padding: 15px;
+            margin: 15px 0;
+        }
+        .error-box {
+            background: #f8d7da;
+            border: 1px solid #dc3545;
+            border-radius: 5px;
+            padding: 15px;
+            margin: 15px 0;
+        }
+        .image-placeholder {
+            background: linear-gradient(45deg, #f0f0f0, #e0e0e0);
+            border: 2px dashed #ccc;
+            border-radius: 8px;
+            padding: 40px;
+            text-align: center;
+            margin: 20px 0;
+            color: #666;
+            font-size: 16px;
+        }
+        .button-demo {
+            display: inline-block;
+            background: #3498db;
+            color: white;
+            padding: 8px 16px;
+            border-radius: 4px;
+            text-decoration: none;
+            margin: 5px;
+            font-weight: bold;
+        }
+        .button-success {
+            background: #27ae60;
+        }
+        .button-warning {
+            background: #f39c12;
+        }
+        .button-danger {
+            background: #e74c3c;
+        }
+        ol, ul {
+            padding-left: 25px;
+        }
+        li {
+            margin: 8px 0;
+        }
+        .highlight {
+            background: #fff3cd;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-weight: bold;
+        }
+        .emoji {
+            font-size: 1.2em;
+        }
+        .qa-section {
+            background: #f8f9fa;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+        .qa-question {
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+        .qa-answer {
+            margin-left: 20px;
+            color: #34495e;
+        }
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+        .feature-card {
+            background: white;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1><span class="emoji">📹</span> Alpha视频批量合成操作指南</h1>
+        
+        <div class="tip-box">
+            <h3><span class="emoji">🎯</span> 写在前面</h3>
+            <p>这个工具是用来批量处理视频的，把你的原始视频和Alpha模板合成在一起，生成新的视频。就像给视频加特效一样简单！</p>
+            <p>不管你是新手还是老手，跟着这个指南一步步来，保证你能轻松上手。</p>
+        </div>
+
+        <div class="step-box">
+            <span class="emoji">🚀</span> 第一步：选择你的素材视频
+        </div>
+
+        <h3><span class="emoji">📂</span> 素材选择区域</h3>
+        
+
+
+        <div class="feature-card">
+            <h4><strong>这里是干什么的？</strong></h4>
+            <ul>
+                <li>这里显示你电脑里所有可以处理的视频文件</li>
+                <li>你可以选择一个或者多个视频来批量处理</li>
+            </ul>
+        </div>
+
+        <div class="feature-card">
+            <h4><strong>怎么操作？</strong></h4>
+            <ol>
+                <li>在<span class="highlight">"原素材（可多选）"</span>区域，你会看到所有可用的视频文件</li>
+                <li>点击视频名字前面的小方框来选择</li>
+                <li>想全选？点击<span class="button-demo button-success">✅ 全选</span>按钮</li>
+                <li>想清空选择？点击<span class="button-demo button-danger">❌ 清空</span>按钮</li>
+            </ol>
+        </div>
+
+        <div class="tip-box">
+            <h4><span class="emoji">💡</span> 小贴士：</h4>
+            <ul>
+                <li>建议一次不要选太多视频，免得电脑卡顿</li>
+                <li>如果看不到你的视频，检查一下是不是放在了正确的文件夹里</li>
+            </ul>
+        </div>
+
+        <div class="step-box">
+            <span class="emoji">💾</span> 第二步：管理你的参数预设
+        </div>
+
+        <h3><span class="emoji">🎛️</span> 预设功能区域</h3>
+        
+
+
+        <div class="feature-grid">
+            <div class="feature-card">
+                <h4><strong>什么是预设？</strong></h4>
+                <p>预设就是把你常用的设置保存起来，下次直接用，不用重新设置。就像手机的快捷方式一样。</p>
+            </div>
+            
+            <div class="feature-card">
+                <h4><strong>怎么保存预设？</strong></h4>
+                <ol>
+                    <li>在"预设名称"框里输入一个好记的名字</li>
+                    <li>点击<span class="button-demo">💾 保存预设</span>按钮</li>
+                    <li>系统会提示你保存成功</li>
+                </ol>
+            </div>
+            
+            <div class="feature-card">
+                <h4><strong>怎么使用预设？</strong></h4>
+                <ol>
+                    <li>点击"选择预设"下拉框</li>
+                    <li>选择你之前保存的预设</li>
+                    <li>点击<span class="button-demo">📂 加载预设</span>按钮</li>
+                    <li>所有设置会自动填入</li>
+                </ol>
+            </div>
+        </div>
+
+        <div class="step-box">
+            <span class="emoji">🎭</span> 第三步：配置Alpha模板
+        </div>
+
+        <h3><span class="emoji">🎨</span> 模板选择区域</h3>
+        
+
+
+        <div class="warning-box">
+            <h4><strong>什么是Alpha模板？</strong></h4>
+            <p>Alpha模板就是特效素材，分为三层：<span class="highlight">顶层</span>、<span class="highlight">中层</span>、<span class="highlight">底层</span>。就像做三明治一样，一层一层叠起来。</p>
+        </div>
+
+        <div class="feature-card">
+            <h4><strong>怎么选择模板？</strong></h4>
+            <ol>
+                <li><strong>顶层模板</strong>：选择最上面的特效层</li>
+                <li><strong>中层模板</strong>：选择中间的特效层</li>
+                <li><strong>底层模板</strong>：选择最下面的特效层</li>
+            </ol>
+            <p>每个下拉框点击后会显示可用的模板文件，选择你需要的即可。</p>
+        </div>
+
+        <div class="tip-box">
+            <h4><span class="emoji">💡</span> 小贴士：</h4>
+            <ul>
+                <li>不是每层都必须选择，可以只用一层或两层</li>
+                <li>建议先用默认模板试试效果</li>
+            </ul>
+        </div>
+
+        <div class="step-box">
+            <span class="emoji">⏰</span> 第四步：时间点控制（高级功能）
+        </div>
+
+        <h3><span class="emoji">🎲</span> 随机时间点设置</h3>
+        
+
+
+        <div class="feature-card">
+            <h4><strong>这个功能是干什么的？</strong></h4>
+            <p>让视频在不同的时间点开始播放，增加随机性，避免所有视频都从同一个时间点开始。</p>
+        </div>
+
+        <div class="feature-grid">
+            <div class="feature-card">
+                <h4><strong>基础随机模式：</strong></h4>
+                <ol>
+                    <li>勾选<span class="highlight">"🎲 启用随机时间点合成"</span></li>
+                    <li>系统会自动在视频的前面部分随机选择开始时间</li>
+                </ol>
+            </div>
+            
+            <div class="feature-card">
+                <h4><strong>高级随机模式：</strong></h4>
+                <ol>
+                    <li>勾选<span class="highlight">"🔧 启用高级随机时间点模式"</span></li>
+                    <li>调整"前N秒随机窗口"滑块，设置随机范围（10-120秒）</li>
+                </ol>
+            </div>
+            
+            <div class="feature-card">
+                <h4><strong>精确定点模式：</strong></h4>
+                <ol>
+                    <li>勾选<span class="highlight">"🎯 启用精确定点播放模式"</span></li>
+                    <li>设置"定点播放时间"，所有视频都从这个时间点开始</li>
+                </ol>
+            </div>
+        </div>
+
+        <div class="tip-box">
+            <h4><span class="emoji">🔰</span> 新手建议：</h4>
+            <ul>
+                <li>刚开始可以不用这些功能，直接用默认设置</li>
+                <li>熟悉后再尝试随机时间点功能</li>
+            </ul>
+        </div>
+
+        <div class="step-box">
+            <span class="emoji">⚙️</span> 第五步：编码设置
+        </div>
+
+        <h3><span class="emoji">🎥</span> 视频质量设置</h3>
+        
+
+
+        <div class="feature-grid">
+            <div class="feature-card">
+                <h4><strong>编码预设：</strong></h4>
+                <p>选择预设的编码方案，比如"高质量"、"标准质量"等。新手直接选"标准质量"就行。</p>
+            </div>
+            
+            <div class="feature-card">
+                <h4><strong>视频质量 (CRF)：</strong></h4>
+                <ul>
+                    <li>数值越小，质量越高，文件越大</li>
+                    <li>数值越大，质量越低，文件越小</li>
+                    <li><span class="highlight">推荐值：23</span>（平衡质量和文件大小）</li>
+                </ul>
+            </div>
+            
+            <div class="feature-card">
+                <h4><strong>音频比特率：</strong></h4>
+                <p>控制音频质量。192kbps 已经很好了，一般不用调。</p>
+            </div>
+        </div>
+
+        <div class="warning-box">
+            <h4><span class="emoji">🔰</span> 小白设置：</h4>
+            <ul>
+                <li>编码预设：选"标准质量"</li>
+                <li>视频质量：保持默认的23</li>
+                <li>音频比特率：保持默认的192</li>
+            </ul>
+        </div>
+
+        <div class="step-box">
+            <span class="emoji">🚀</span> 第六步：开始处理
+        </div>
+
+        <h3><span class="emoji">🎮</span> 控制面板</h3>
+        
+
+
+        <div class="feature-grid">
+            <div class="feature-card">
+                <h4><strong>开始处理：</strong></h4>
+                <ol>
+                    <li>确认所有设置都OK了</li>
+                    <li>点击<span class="button-demo button-success">🚀 开始批量处理</span>按钮</li>
+                    <li>等待处理完成</li>
+                </ol>
+            </div>
+            
+            <div class="feature-card">
+                <h4><strong>处理过程中：</strong></h4>
+                <ul>
+                    <li>"处理结果"框会显示实时进度</li>
+                    <li>可以看到正在处理哪个文件</li>
+                    <li>显示处理成功或失败的信息</li>
+                </ul>
+            </div>
+            
+            <div class="feature-card">
+                <h4><strong>停止处理：</strong></h4>
+                <ul>
+                    <li><span class="button-demo button-warning">⏹️ 停止处理</span>：正常停止，会完成当前任务</li>
+                    <li><span class="button-demo button-danger">🛑 紧急停止</span>：立即停止，可能丢失当前进度</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="step-box">
+            <span class="emoji">📁</span> 第七步：文件夹操作
+        </div>
+
+        <h3><span class="emoji">🗂️</span> 快捷操作</h3>
+        
+
+
+        <div class="feature-grid">
+            <div class="feature-card">
+                <h4><strong>快捷按钮：</strong></h4>
+                <ul>
+                    <li><span class="button-demo">📂 素材文件夹</span>：打开存放原始视频的文件夹</li>
+                    <li><span class="button-demo">🎭 模板文件夹</span>：打开存放Alpha模板的文件夹</li>
+                    <li><span class="button-demo">📤 输出文件夹</span>：打开存放处理结果的文件夹</li>
+                </ul>
+            </div>
+            
+            <div class="feature-card">
+                <h4><strong>刷新功能：</strong></h4>
+                <ul>
+                    <li><span class="button-demo">🔄 刷新所有列表</span>：重新扫描所有文件夹，更新文件列表</li>
+                    <li>添加了新文件后记得点这个按钮</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="step-box">
+            <span class="emoji">🎬</span> 第八步：预览和下载
+        </div>
+
+        <h3><span class="emoji">📥</span> 结果管理</h3>
+        
+
+
+        <div class="feature-grid">
+            <div class="feature-card">
+                <h4><strong>查看结果：</strong></h4>
+                <ol>
+                    <li>处理完成后，在"输出视频列表"选择视频</li>
+                    <li>点击<span class="button-demo">🔄 刷新</span>更新列表</li>
+                    <li>选中视频后可以在预览区域观看</li>
+                </ol>
+            </div>
+            
+            <div class="feature-card">
+                <h4><strong>下载视频：</strong></h4>
+                <ol>
+                    <li>在列表中选择要下载的视频</li>
+                    <li>点击<span class="button-demo button-success">📥 下载选中视频</span></li>
+                    <li>选择保存位置</li>
+                </ol>
+            </div>
+            
+            <div class="feature-card">
+                <h4><strong>删除视频：</strong></h4>
+                <ol>
+                    <li>选择不需要的视频</li>
+                    <li>点击<span class="button-demo button-danger">🗑️ 删除选中视频</span></li>
+                    <li>确认删除</li>
+                </ol>
+            </div>
+        </div>
+
+        <h2><span class="emoji">🆘</span> 常见问题解答</h2>
+
+        <div class="qa-section">
+            <div class="qa-question"><span class="emoji">❓</span> Q: 看不到我的视频文件？</div>
+            <div class="qa-answer">
+                <strong>A:</strong>
+                <ol>
+                    <li>检查视频格式是否支持（MP4、MOV、AVI等）</li>
+                    <li>确认文件放在了正确的素材文件夹</li>
+                    <li>点击"刷新所有列表"按钮</li>
+                </ol>
+            </div>
+        </div>
+
+        <div class="qa-section">
+            <div class="qa-question"><span class="emoji">❓</span> Q: 处理速度很慢？</div>
+            <div class="qa-answer">
+                <strong>A:</strong>
+                <ol>
+                    <li>减少并行任务数</li>
+                    <li>降低视频质量设置</li>
+                    <li>关闭其他占用CPU的程序</li>
+                </ol>
+            </div>
+        </div>
+
+        <div class="qa-section">
+            <div class="qa-question"><span class="emoji">❓</span> Q: 处理失败了？</div>
+            <div class="qa-answer">
+                <strong>A:</strong>
+                <ol>
+                    <li>检查原视频是否损坏</li>
+                    <li>确认Alpha模板文件完整</li>
+                    <li>查看"处理结果"框的错误信息</li>
+                </ol>
+            </div>
+        </div>
+
+        <div class="qa-section">
+            <div class="qa-question"><span class="emoji">❓</span> Q: 输出的视频质量不好？</div>
+            <div class="qa-answer">
+                <strong>A:</strong>
+                <ol>
+                    <li>降低CRF值（提高质量）</li>
+                    <li>选择更高质量的编码预设</li>
+                    <li>检查原视频质量</li>
+                </ol>
+            </div>
+        </div>
+
+        <div class="qa-section">
+            <div class="qa-question"><span class="emoji">❓</span> Q: 软件卡死了？</div>
+            <div class="qa-answer">
+                <strong>A:</strong>
+                <ol>
+                    <li>点击"紧急停止"按钮</li>
+                    <li>重启软件</li>
+                    <li>减少并行任务数再试</li>
+                </ol>
+            </div>
+        </div>
+
+        <h2><span class="emoji">💡</span> 使用技巧</h2>
+
+        <div class="feature-grid">
+            <div class="feature-card">
+                <h4><strong>批量处理技巧：</strong></h4>
+                <ol>
+                    <li>先用一个视频测试设置，确认效果满意再批量处理</li>
+                    <li>相似的视频可以使用相同的预设</li>
+                    <li>夜间处理大批量视频，避免影响白天工作</li>
+                </ol>
+            </div>
+            
+            <div class="feature-card">
+                <h4><strong>质量优化技巧：</strong></h4>
+                <ol>
+                    <li>原视频质量越好，输出质量越好</li>
+                    <li>Alpha模板分辨率要匹配原视频</li>
+                    <li>不要过度压缩，保持合理的文件大小</li>
+                </ol>
+            </div>
+            
+            <div class="feature-card">
+                <h4><strong>性能优化技巧：</strong></h4>
+                <ol>
+                    <li>关闭不必要的后台程序</li>
+                    <li>确保硬盘空间充足</li>
+                    <li>定期清理临时文件</li>
+                </ol>
+            </div>
+        </div>
+
+        <div class="tip-box">
+            <h2><span class="emoji">🎉</span> 结语</h2>
+            <p>恭喜你！现在你已经掌握了Alpha视频批量合成工具的使用方法。</p>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>
